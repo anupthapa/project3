@@ -15,7 +15,7 @@ class Class
   end
 end
 class Foo
-    attr_accessor_with_history :bar
+  attr_accessor_with_history :bar
 end
 
 f1 = Foo.new
