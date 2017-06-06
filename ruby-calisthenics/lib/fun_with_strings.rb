@@ -27,7 +27,7 @@ public
   public
   def anagram_groups(words)
     anagramarray = Array.new
-    words.each do |word|  #do for allthe words
+    words.each do |word|  
       result = []
       words.each do |nextword|    
         if (word.downcase.split(//).sort == nextword.downcase.split(//).sort) #compare characters
