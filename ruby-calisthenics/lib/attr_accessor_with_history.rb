@@ -5,6 +5,22 @@ class Class
     attr_reader attr_name+"_history" # create bar_history getter
     class_eval %Q{
       # YOUR CODE HERE
+        def #{attr_name}=(val)
+                          if @#{attr_name}_history.nil?
+                              @#{attr_name}_history = [nil]
+                          end
+                        @#{attr_name}_history.push(val)
+                        @#{attr_name}=val
+                      end
     }
   end
 end
+class Check
+    attr_accessor_with_history :bar
+end
+
+f = Check.new     
+puts f.bar = 7      
+puts f.bar = :HalaMadrid!  
+puts f.bar = 'Vamos!' 
+puts f.bar_history 
