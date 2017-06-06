@@ -1,22 +1,45 @@
-class RockPaperScissors
-
-  # Exceptions this class can raise:
-  class NoSuchStrategyError < StandardError ; end
-
-  def self.winner(player1, player2)
-    case player1[1] + player2[1]
-    when 'PR', 'SP', 'RS' then player1
-    when 'RP', 'PS', 'SR' then player2
-    when 'RR', 'PP', 'SS' then player1
-    else raise NoSuchStrategyError, "R,P,S only. Please!"
-    end
-  end
-
-  def self.tournament_winner(tournament)
-    if tournament[0][0].is_a?(String)
-      winner(tournament[0], tournament[1])
+def rps_tournament_winner(game)
+    if game[0][0].class == String
+      return rps_game_winner(game)
     else
-      winner(tournament_winner(tournament[0]), tournament_winner(tournament[1]))
+      return rps_game_winner([rps_tournament_winner(game[0]),rps_tournament_winner(game[1])])
     end
-  end
 end
+
+
+def rps_game_winner(game)
+  raise WrongNumberOfPlayerError unless game.length == 2
+
+  player1 = game[0][1].downcase  #get the r, p, s
+  player2 = game[1][1].downcase  #get the r, p, s
+
+  if player1 == "p" && player2 == "s"
+    return game[1]
+  elsif player1 == "s" && player2 == "p"
+    return game[0]
+  elsif player1 == "p" && player2 =="r"
+    return game[0]
+  elsif player1 == "r" && player2 == "p"
+    return game[1]
+  elsif player1 == "r" && player2 == "s"
+    return game[0]
+  elsif player1 == "s" && player2 == "r"
+    return game[1]
+  else
+    NoSuchStrategyError
+  end
+
+end
+
+arr = [
+    [
+        [ ["Armando", "P"], ["Dave", "S"] ],
+        [ ["Richard", "R"],  ["Michael", "S"] ],
+    ],
+    [
+        [ ["Allen", "S"], ["Omer", "P"] ],
+        [ ["David E.", "R"], ["Richard X.", "P"] ]
+    ]
+]
+
+puts rps_tournament_winner(arr).to_s
