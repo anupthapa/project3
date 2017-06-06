@@ -1,3 +1,15 @@
+=begin
+class NoSuchStrategyError < StandardError
+  attr_reader :action
+
+  def initialize(message)
+    super(message)
+
+    @action = action
+  end
+end
+=end
+  
 def rps_tournament_winner(game)
     if game[0][0].class == String
       return rps_game_winner(game)
@@ -27,13 +39,15 @@ def rps_game_winner(game)
   elsif (player1 == "S" && player2 == "S") || (player1 == "R" && player2 == "R") || (player1 == "P" && player2 == "P")
     return game[0]
   else
+    #NoSuchStrategyError
+    #raise NoSuchStrategyError.new("Strategy must be one of R, P, S")
     return "Strategy must be one of R, P, S"
   end
 end
 
 arr = [
     [
-        [ ["Armando", "P"], ["Dave", "S"] ],
+        [ ["Armando", "p"], ["Dave", "S"] ],
         [ ["Richard", "R"],  ["Michael", "S"] ],
     ],
     [
