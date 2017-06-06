@@ -48,4 +48,4 @@ p = String.new
 r = String.new
 s.palindrome?("Madam I'm Adam")
 p.count_words("'for', 'potatoes', 'racs', 'four','scar', 'creams', 'scream'")
-r.anagram_groups(['cars', 'for', 'potatoes', 'racs', 'four','scar', 'creams', 'scream'] )
+r.anagram_groups(['cars', 'for', 'potatoes', 'racs', 'four', 'scar', 'creams', 'scream'] )
