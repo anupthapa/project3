@@ -6,29 +6,29 @@ def rps_tournament_winner(game)
     end
 end
 
-
 def rps_game_winner(game)
   raise WrongNumberOfPlayerError unless game.length == 2
 
-  player1 = game[0][1].downcase  #get the r, p, s
-  player2 = game[1][1].downcase  #get the r, p, s
+  player1 = game[0][1]  #get the r, p, s
+  player2 = game[1][1]  #get the r, p, s
 
-  if player1 == "p" && player2 == "s"
+  if player1 == "P" && player2 == "S"
     return game[1]
-  elsif player1 == "s" && player2 == "p"
+  elsif player1 == "S" && player2 == "P"
     return game[0]
-  elsif player1 == "p" && player2 =="r"
+  elsif player1 == "P" && player2 =="R"
     return game[0]
-  elsif player1 == "r" && player2 == "p"
+  elsif player1 == "R" && player2 == "P"
     return game[1]
-  elsif player1 == "r" && player2 == "s"
+  elsif player1 == "R" && player2 == "S"
     return game[0]
-  elsif player1 == "s" && player2 == "r"
+  elsif player1 == "S" && player2 == "R"
     return game[1]
+  elsif (player1 == "S" && player2 == "S") || (player1 == "R" && player2 == "R") || (player1 == "P" && player2 == "P")
+    return game[0]
   else
-    NoSuchStrategyError
+    return "Strategy must be one of R, P, S"
   end
-
 end
 
 arr = [
